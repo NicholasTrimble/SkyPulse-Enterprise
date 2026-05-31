@@ -4,7 +4,13 @@ using SkyPulse.Core.Models;
 using SkyPulse.Infrastructure.Services;
 
 
+
 var builder = WebApplication.CreateBuilder(args);
+
+if (File.Exists(".env"))
+{
+    builder.Configuration["ConnectionStrings:DefaultConnection"] = File.ReadAllText(".env").Trim('"').Trim();
+}
 
 // 1. Add native ASP.NET Core MVC services (Controllers and Views)
 builder.Services.AddControllersWithViews();
@@ -46,7 +52,6 @@ app.MapControllerRoute(
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.MapHub<TelemetryHub>("/hubs/telemetry");
-
 
 
 
