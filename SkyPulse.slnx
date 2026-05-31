@@ -1,6 +1,7 @@
 <Solution>
   <Folder Name="/Solution Items/">
     <File Path=".gitignore" />
+    <File Path="README.md" />
   </Folder>
   <Project Path="SkyPulse.Core/SkyPulse.Core.csproj" />
   <Project Path="SkyPulse.Infrastructure/SkyPulse.Infrastructure.csproj" />
