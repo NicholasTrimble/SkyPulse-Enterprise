@@ -10,15 +10,14 @@ SkyPulse-Enterprise is a high-performance .NET cloud web platform and data engin
 
 ### Live Operations Dashboard
 The main operational gateway presents calculated enterprise risk assessments, telemetry health states, and real-time core system status.
-![Operational Dashboard](C:\Users\Nick\source\repos\SkyPulse-Enterprise\SkyPulse.Web\wwwroot\images\Home.png)
+![Operational Dashboard](SkyPulse.Web/wwwroot/images/Home.png)
 
 ### Real-Time Ingestion Loop
 Displays the high-frequency stream tracking satellite sources, proton speeds, density matrix shifts, and proton temperatures.
-![Ingestion Stream](C:\Users\Nick\source\repos\SkyPulse-Enterprise\SkyPulse.Web\wwwroot\images\Live.png)
-
+![Ingestion Stream](SkyPulse.Web/wwwroot/images/Live.png)
 ### Historical Metrics & Analytics
 A structured data ledger processing historic telemetry records to flag severe solar patterns over rolling analytical windows.
-![Analytics Suite](C:\Users\Nick\source\repos\SkyPulse-Enterprise\SkyPulse.Web\wwwroot\images\Tracking.png)
+![Analytics Suite](SkyPulse.Web/wwwroot/images/Tracking.png)
 
 ---
 
