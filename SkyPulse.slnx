@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="SkyPulse.Core/SkyPulse.Core.csproj" />
+  <Project Path="SkyPulse.Infrastructure/SkyPulse.Infrastructure.csproj" />
+  <Project Path="SkyPulse.Web/SkyPulse.Web.csproj" />
+</Solution>

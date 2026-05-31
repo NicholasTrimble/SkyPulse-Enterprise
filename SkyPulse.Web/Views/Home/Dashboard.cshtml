@@ -1,0 +1,118 @@
+﻿
+@{
+    ViewData["Title"] = "Real-Time Telemetry Dashboard";
+}
+
+<div class="container-fluid mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>🌌 SkyPulse Satellite Telemetry Stream</h2>
+        <div class="badge bg-success p-2" id="connectionStatus">Connecting to Stream...</div>
+    </div>
+
+    <div class="row mb-4">
+        <div class="col-md-12">
+            <div class="card bg-dark text-white shadow">
+                <div class="card-body text-center py-5">
+                    <h5 class="text-uppercase tracking-wide text-muted">Enterprise Space Weather Risk Score</h5>
+                    <h1 class="display-1 fw-bold text-warning" id="liveRiskScore">--.--</h1>
+                    <h3 class="text-info" id="liveRiskLevel">Monitoring...</h3>
+                    <p class="text-muted small">System updates automatically every 60 seconds from live NOAA data matrices</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row text-center">
+        <div class="col-md-4 mb-3">
+            <div class="card shadow-sm h-100 border-start border-primary border-4">
+                <div class="card-body">
+                    <h6 class="text-muted text-uppercase">Proton Speed</h6>
+                    <h2 class="text-primary" id="liveSpeed">-- km/s</h2>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <div class="card shadow-sm h-100 border-start border-info border-4">
+                <div class="card-body">
+                    <h6 class="text-muted text-uppercase">Proton Density</h6>
+                    <h2 class="text-info" id="liveDensity">-- n/cc</h2>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <div class="col px-0">
+                <div class="card shadow-sm h-100 border-start border-danger border-4">
+                    <div class="card-body">
+                        <h6 class="text-muted text-uppercase">Proton Temperature</h6>
+                        <h2 class="text-danger" id="liveTemperature">-- K</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card mt-4 shadow-sm">
+        <div class="card-header bg-light">
+            <span class="fw-bold">📡 Live Stream Activity Ledger</span>
+        </div>
+        <div class="card-body p-0">
+            <ul class="list-group list-group-flush" id="telemetryLog" style="max-height: 250px; overflow-y: auto;">
+                <li class="list-group-item text-muted text-center py-3">Awaiting system broadcast signals...</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/8.0.0/signalr.min.js"></script>
+    <script>
+        // 1. Establish the connection to our TelemetryHub endpoint
+        const connection = new signalR.HubConnectionBuilder()
+        .withUrl("/hubs/telemetry")
+        .withAutomaticReconnect()
+        .build();
+
+        // 2. Create the listener to catch the snapshot objects coming from our background service
+        connection.on("ReceiveLatestTelemetry", function (snapshot) {
+        console.log("Telemetry packet received:", snapshot);
+
+        // Update the Core DOM element text values instantly
+        document.getElementById("liveRiskScore").innerText = snapshot.enterpriseRiskScore.toFixed(2);
+        document.getElementById("liveRiskLevel").innerText = snapshot.riskLevel;
+        document.getElementById("liveSpeed").innerText = snapshot.protonSpeed + " km/s";
+        document.getElementById("liveDensity").innerText = snapshot.protonDensity + " n/cc";
+        document.getElementById("liveTemperature").innerText = snapshot.protonTemperature + " K";
+
+        // Dynamically add a line item to our real-time activity ledger
+        const log = document.getElementById("telemetryLog");
+            
+        // Remove the temporary placeholder row if it exists
+        if(log.children.length === 1 && log.children[0].classList.contains("text-muted")) {
+        log.innerHTML = "";
+        }
+
+        const time = new Date(snapshot.timeTag).toLocaleTimeString();
+        const newItem = document.createElement("li");
+        newItem.className = "list-group-item d-flex justify-content-between align-items-center animate-fade-in";
+        newItem.innerHTML = `
+        <span><strong>[${time}]</strong> Received metrics array from source: <code>${snapshot.satelliteSource}</code></span>
+        <span class="badge bg-secondary">Risk Index Score: ${snapshot.enterpriseRiskScore}</span>
+        `;
+        log.insertBefore(newItem, log.firstChild);
+        });
+
+        // 3. Turn on the WebSocket connection pipe
+        connection.start()
+        .then(function () {
+        const status = document.getElementById("connectionStatus");
+        status.innerText = "● STREAM ACTIVE";
+        status.className = "badge bg-success p-2";
+        })
+        .catch(function (err) {
+        console.error("Pipeline connection failure:", err.toString());
+        const status = document.getElementById("connectionStatus");
+        status.innerText = "● PIPELINE FAILURE";
+        status.className = "badge bg-danger p-2";
+        });
+    </script>
+}
