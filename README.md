@@ -2,7 +2,7 @@
 
 SkyPulse-Enterprise is a high-performance .NET cloud web platform and data engineering pipeline designed to ingest, process, and analyze live space weather telemetry streams. The system automates ingestion loops from remote satellite REST endpoints, runs real-time risk scoring, and archives telemetry data into an enterprise-tier cloud ledger.
 
-**Live Application:** [View Live Deployment](https://skypulseweb-abdndfa8bsasgwhh.centralus-01.azurewebsites.net/Home/Dashboard)
+**Live Application:** [View Live Deployment](https://skypulseweb-abdndfa8bsasgwhh.centralus-01.azurewebsites.net)
 
 ---
 
