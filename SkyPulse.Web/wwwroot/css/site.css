@@ -1,31 +1,138 @@
-html {
-  font-size: 14px;
+/* ---------------------------------------------------------
+   SKY PULSE ENTERPRISE MASTER BRAND DESIGN SYSTEM
+--------------------------------------------------------- */
+
+html, body {
+    height: 100%;
 }
 
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+:root {
+    --bg-main: #0b0f17;
+    --bg-card: rgba(20, 27, 45, 0.7);
+    --border-glow: rgba(0, 242, 254, 0.15);
+    --neon-cyan: #00f2fe;
+    --neon-amber: #f5a623;
+    --neon-crimson: #ff4757;
+    --text-muted: #ffffff;
 }
 
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
-}
-
-html {
-  position: relative;
-  min-height: 100%;
-}
-
+/* Base Document Canvas Structure */
 body {
-  margin-bottom: 60px;
+    background-color: var(--bg-main);
+    color: #ffffff;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    overflow-x: hidden;
+    background-image: radial-gradient(at 0% 0%, rgba(0, 242, 254, 0.05) 0px, transparent 50%), radial-gradient(at 100% 100%, rgba(255, 71, 87, 0.03) 0px, transparent 50%);
 }
 
-.form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
-  color: var(--bs-secondary-color);
-  text-align: end;
+/* High-Tech Glossmorphic Navigation Headers */
+.navbar-custom {
+    background: rgba(11, 15, 23, 0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
 }
 
-.form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
-  text-align: start;
+.navbar-brand-ops {
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    color: #ffffff !important;
+}
+
+    .navbar-brand-ops span {
+        color: var(--neon-cyan);
+        text-shadow: 0 0 10px rgba(0, 242, 254, 0.5);
+    }
+
+.nav-link-ops {
+    color: var(--text-muted) !important;
+    font-weight: 600;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+    transition: all 0.2s ease;
+    border-bottom: 2px solid transparent;
+}
+
+    .nav-link-ops:hover, .nav-link-ops.active {
+        color: #ffffff !important;
+        border-bottom: 2px solid var(--neon-cyan);
+    }
+
+/* Glassmorphism Structural Core Layout Components */
+.cyber-card {
+    background: var(--bg-card);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 12px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    transition: border 0.3s ease;
+}
+
+    .cyber-card:hover {
+        border-color: var(--border-glow);
+    }
+
+.tech-mono {
+    font-family: 'JetBrains Mono', monospace;
+}
+
+.terminal-header {
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+}
+
+/* Dynamic System Pulse Animations & Data Interceptors */
+.pulse-glow {
+    animation: pulseAnimation 2s infinite alternate;
+}
+
+@keyframes pulseAnimation {
+    0% {
+        text-shadow: 0 0 10px rgba(0, 242, 254, 0.4);
+    }
+
+    100% {
+        text-shadow: 0 0 25px rgba(0, 242, 254, 0.9), 0 0 40px rgba(0, 242, 254, 0.4);
+    }
+}
+
+.data-flash {
+    animation: dataFlashFrame 0.5s cubic-bezier(0.1, 1, 0.1, 1);
+}
+
+@keyframes dataFlashFrame {
+    0% {
+        background: rgba(0, 242, 254, 0.25);
+    }
+
+    100% {
+        background: transparent;
+    }
+}
+
+/* Network Connection Component Indicators */
+.status-active {
+    background: rgba(0, 255, 136, 0.1) !important;
+    border: 1px solid rgba(0, 255, 136, 0.3) !important;
+    color: #00ff88 !important;
+    box-shadow: 0 0 15px rgba(0, 255, 136, 0.15);
+}
+
+/* Grid & Ledger Typography Alignment Rules */
+.ledger-row {
+    background: rgba(255,255,255,0.01) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04) !important;
+    color: #ffffff !important;
+    transition: background 0.2s ease;
+}
+
+    .ledger-row:hover {
+        background: rgba(255,255,255,0.03) !important;
+    }
+
+footer {
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 0.85rem;
 }

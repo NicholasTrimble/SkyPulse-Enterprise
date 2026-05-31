@@ -1,8 +1,37 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Gateway Access Portal";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8 col-md-10">
+            <div class="card cyber-card p-5 text-center shadow-lg border border-secondary border-opacity-10">
+                <div class="mb-4">
+                    <span class="tech-mono terminal-header d-block mb-2">SECURITY ENTERPRISE GATEWAY</span>
+                    <h1 class="fw-bold tracking-wide text-white display-4">SKY<span style="color: var(--neon-cyan);">PULSE</span></h1>
+                </div>
+                
+                <hr class="border-secondary opacity-25 my-4">
+                
+                <div class="my-4 text-start bg-black bg-opacity-30 p-4 rounded border border-secondary border-opacity-5 font-monospace small text-white-50">
+                    <p class="mb-2"><span class="text-success">✔</span> Initializing Core Subsystem Pipelines...</p>
+                    <p class="mb-2"><span class="text-success">✔</span> Mapping SQL Relational Archives...</p>
+                    <p class="mb-0"><span class="text-success">✔</span> Connected to NOAA L1 Satellite Stream Array.</p>
+                </div>
+
+                <p class="text-white-50 mb-5 px-3">
+                    Welcome to the SkyPulse telemetry matrix. This system tracks real-time high-speed supersonic plasma flows and proton particulate distributions directly from Earth-Sun Lagrange Point 1 orbital monitoring arrays to assess infrastructure threat variables.
+                </p>
+
+                <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">
+                    <a asp-controller="Home" asp-action="Dashboard" class="btn btn-info btn-lg px-4 gap-3 tech-mono font-weight-bold shadow-sm" style="background: var(--neon-cyan); border: none; color: #0b0f17;">
+                        ENTER OPS INTERFACE
+                    </a>
+                    <a asp-controller="Home" asp-action="Analytics" class="btn btn-outline-secondary btn-lg px-4 tech-mono text-white border-secondary border-opacity-50">
+                        ACCESS ARCHIVES
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

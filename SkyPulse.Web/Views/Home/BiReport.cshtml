@@ -1,0 +1,61 @@
+﻿@{
+    ViewData["Title"] = "Semantic Analytics Workspace";
+}
+
+<div class="container-fluid mt-2">
+    <div class="d-flex justify-content-between align-items-center mb-4 pb-2 border-bottom border-secondary border-opacity-10">
+        <div>
+            <h4 class="fw-bold mb-0 text-white tracking-wide">COMPREHENSIVE TELEMETRY BI REPORT</h4>
+            <span class="small text-info font-monospace">CORE ANALYSIS AND DATASTREAM REGRESSION PROFILE</span>
+        </div>
+        <a asp-controller="Home" asp-action="Analytics" class="btn btn-sm btn-outline-secondary tech-mono text-white border-secondary border-opacity-50">
+            ← BACK TO LEDGER
+        </a>
+    </div>
+
+    <div class="row">
+        <div class="col-xl-8 mb-4">
+            <div class="card cyber-card p-2 bg-black bg-opacity-40 border border-secondary border-opacity-25 shadow-lg">
+                <img src="~/images/Analytics.png" alt="Power BI Analytical Dashboard" class="img-fluid rounded shadow" style="border: 1px solid rgba(255,255,255,0.05);" />
+            </div>
+        </div>
+
+        <div class="col-xl-4 mb-4">
+            <div class="card cyber-card p-4 h-100 d-flex flex-column justify-content-between border-start border-info border-2">
+                <div>
+                    <span class="tech-mono terminal-header d-block text-info mb-2">DATA SCIENCE BRIEFING</span>
+                    <h5 class="text-white fw-bold tracking-wide mb-3">Solar Wind Impact & Risk Correlation</h5>
+                    
+                    <div class="small text-white-50 lh-base">
+                        <p class="mb-3">
+                            This report breaks down the live data feeds coming from our space weather monitoring satellites. By looking at how these deep-space readings interact over time, we can spot hidden security patterns and better protect our systems from unexpected solar activity.
+                        </p>
+                        
+                        <h6 class="text-white tech-mono font-weight-bold mt-4 mb-2">KEY PERFORMANCE & SECURITY INSIGHTS</h6>
+                        <ul class="ps-3 mb-4 text-white font-monospace" style="font-size: 0.85rem;">
+                            <li class="mb-2">
+                                <strong class="text-info">Solar Wind Speed Drives Threat Levels:</strong>
+                                After looking at the historical data, it is clear that the speed of incoming solar wind is the main factor pushing up our risk scores. The faster the stream is traveling, the harder it hits our systems, which triggers immediate spikes in our threat index.
+                            </li>
+                            <li class="mb-2">
+                                <strong class="text-warning">Particle Density Warning Zones:</strong>
+                                We noticed that sudden jumps in particle density usually happen right as space weather temperatures shift. This combination acts as an early warning sign that a massive solar front is building up, giving our operations team a chance to prepare before a storm actually hits.
+                            </li>
+                            <li class="mb-0">
+                                <strong class="text-success">92% Baseline Stability:</strong>
+                                The great news is that our tracking grid is proving to be highly resilient. The data shows that everything stayed completely safe and within normal bounds for roughly 92% of the timeline, proving that our critical setup is reliable during daily operations.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+                <div class="bg-black bg-opacity-30 p-3 rounded border border-secondary border-opacity-10">
+                    <span class="d-block tech-mono terminal-header text-white mb-1">SYSTEM DATA PROFILE</span>
+                    <span class="font-monospace small text-white-50 d-block">Pipeline Engine: DirectQuery Core</span>
+                    <span class="font-monospace small text-white-50 d-block">Target Dataset: TelemetrySnapshots Schema</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,127 @@
+﻿@model IEnumerable<SkyPulse.Core.Models.TelemetrySnapshot>
+
+@{
+    ViewData["Title"] = "Executive Intelligence Matrix";
+}
+
+<div class="container-fluid mt-2">
+    <div class="d-flex justify-content-between align-items-center mb-4 pb-2 border-bottom border-secondary border-opacity-10">
+        <div>
+            <h4 class="fw-bold mb-0 text-white tracking-wide">ADVANCED DATA ANALYTICS SUITE</h4>
+            <span class="small text-info font-monospace">DATA ENGINE TELEMETRY CORE</span>
+        </div>
+        <span class="badge bg-info bg-opacity-10 text-info border border-info border-opacity-25 font-monospace px-3 py-2">
+            RUN ENGINES: OPTIMAL
+        </span>
+    </div>
+
+    <div class="row mb-4 text-center">
+        <div class="col-xl-3 col-sm-6 mb-3">
+            <div class="card cyber-card p-3">
+                <span class="tech-mono terminal-header d-block text-white-50 mb-1">INGESTED VECTOR FRAMES</span>
+                <h3 class="fw-bold tech-mono text-white mb-0">@ViewBag.TotalRecords</h3>
+            </div>
+        </div>
+        <div class="col-xl-3 col-sm-6 mb-3">
+            <div class="card cyber-card p-3 border-start border-danger border-2">
+                <span class="tech-mono terminal-header d-block text-danger mb-1">PEAK RECORDED ANOMALY</span>
+                <h3 class="fw-bold tech-mono text-danger mb-0">@ViewBag.MaxRiskScore</h3>
+            </div>
+        </div>
+        <div class="col-xl-3 col-sm-6 mb-3">
+            <div class="card cyber-card p-3 border-start border-info border-2">
+                <span class="tech-mono terminal-header d-block text-info mb-1">VELOCITY MOVING AVERAGE</span>
+                <h3 class="fw-bold tech-mono text-info mb-0">@ViewBag.AvgProtonSpeed <span class="fs-6 text-white-50">km/s</span></h3>
+            </div>
+        </div>
+        <div class="col-xl-3 col-sm-6 mb-3">
+            <div class="card cyber-card p-3 border-start border-warning border-2">
+                <span class="tech-mono terminal-header d-block text-warning mb-1">AVERAGE PARTICULATE DENSITY</span>
+                <h3 class="fw-bold tech-mono text-warning mb-0">@ViewBag.AvgProtonDensity <span class="fs-6 text-white-50">n/cc</span></h3>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xl-5 mb-4">
+            <div class="card cyber-card h-100 p-4 d-flex flex-column justify-content-between border-start border-info border-2">
+                <div>
+                    <span class="tech-mono terminal-header d-block text-info mb-2">DATA VISUALIZATION SYSTEMS</span>
+                    <h5 class="text-white fw-bold tracking-wide">Business Intelligence Portal</h5>
+                    <hr class="border-secondary opacity-25 my-2">
+                    <p class="small text-white-50 lh-base mb-3">
+                        Launch our comprehensive visual reporting workspace to view specialized time-series regressions, categorical distribution summaries, and deep analytical observations compiled from this telemetry ledger.
+                    </p>
+                </div>
+
+                <a asp-controller="Home" asp-action="BiReport" class="position-relative d-block overflow-hidden rounded border border-secondary border-opacity-25 my-2 bg-black bg-opacity-40 style-preview-link" style="height: 180px; text-decoration: none;">
+                    <img src="~/images/Analytics.png" alt="Power BI Report Link" class="w-100 h-100" style="object-fit: cover; opacity: 0.4; transition: opacity 0.2s ease;" onmouseover="this.style.opacity='0.6'" onmouseout="this.style.opacity='0.4'" />
+                    <div class="position-absolute top-50 start-50 translate-middle text-center w-100 px-3">
+                        <span class="btn btn-sm btn-outline-info tech-mono px-3" style="font-size: 0.75rem; background: rgba(11, 15, 23, 0.7);">
+                            VIEW FULL DASHBOARD GRAPHICS
+                        </span>
+                    </div>
+                </a>
+
+                <div class="pt-3">
+                    <a asp-controller="Home" asp-action="BiReport" class="btn btn-info w-100 tech-mono py-2 fw-bold text-center" style="background: var(--neon-cyan); border: none; color: #0b0f17; text-decoration: none; display: block;">
+                        POWER BI ANALYTIC REPORT ↗
+                    </a>
+                    <span class="d-block text-center text-white-50 tech-mono mt-2" style="font-size: 0.65rem;">APPLICATION ROUTER CONTEXT ACTIVE</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-7 mb-4">
+            <div class="card cyber-card h-100 overflow-hidden">
+                <div class="card-header bg-black bg-opacity-20 border-bottom border-secondary border-opacity-10 py-3 px-4">
+                    <span class="tech-mono terminal-header text-white">TRANSACTION STRINGS DISCOVERED IN LOCAL SQL INSTANCE</span>
+                </div>
+                <div class="card-body p-0" style="max-height: 410px; overflow-y: auto;">
+                    <div class="table-responsive">
+                        <table class="table table-dark table-hover mb-0 align-middle font-monospace" style="--bs-table-bg: transparent;">
+                            <thead class="table-dark text-white-50 small position-sticky top-0 bg-dark" style="border-bottom: 2px solid rgba(255,255,255,0.08); z-index: 1;">
+                                <tr>
+                                    <th class="ps-4 py-3">TIMESTAMP (UTC)</th>
+                                    <th class="py-3">SOURCE</th>
+                                    <th class="py-3">SPEED</th>
+                                    <th class="py-3">DENSITY</th>
+                                    <th class="py-3">RISK SCORE</th>
+                                    <th class="pe-4 py-3 text-end">STATE</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if (!Model.Any())
+                                {
+                                    <tr>
+                                        <td colspan="6" class="text-center text-white-50 py-5">
+                                            [EMPTY SCHEMA] No historical records currently parsed into local tables.
+                                        </td>
+                                    </tr>
+                                }
+                                @foreach (var record in Model)
+                                {
+                                    <tr class="ledger-row" style="border-bottom: 1px solid rgba(255,255,255,0.03); border-top: none;">
+                                        <td class="ps-4 text-white-50">@record.TimeTag.ToString("yyyy-MM-dd HH:mm:ss")</td>
+                                        <td><span class="badge bg-dark border border-secondary border-opacity-25 text-info px-2">@record.SatelliteSource</span></td>
+                                        <td>@record.ProtonSpeed.ToString("F0") km/s</td>
+                                        <td>@record.ProtonDensity.ToString("F1") n/cc</td>
+                                        <td class="fw-bold text-white">@record.EnterpriseRiskScore.ToString("F2")</td>
+                                        <td class="pe-4 text-end">
+                                            <span class="badge font-monospace text-uppercase
+                                                @(record.RiskLevel == "Critical" ? "bg-danger bg-opacity-10 text-danger border border-danger border-opacity-25" :
+                                                                                                    record.RiskLevel == "High" ? "bg-warning bg-opacity-10 text-warning border border-warning border-opacity-25" :
+                                                                                                    "bg-success bg-opacity-10 text-success border border-success border-opacity-25")" style="font-size: 0.7rem;">
+                                                @record.RiskLevel
+                                            </span>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

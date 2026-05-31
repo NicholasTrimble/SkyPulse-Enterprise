@@ -95,8 +95,13 @@ namespace SkyPulse.Infrastructure.Services
 
         private double CalculateRiskScore(double speed, double density)
         {
-            double speedWeight = Math.Min(speed / 1000.0 * 60.0, 60.0);
-            double densityWeight = Math.Min(density / 25.0 * 40.0, 40.0);
+            // 1. Speed Weight (75% Max Weight): Normalized against a max super-storm speed of 1500 km/s
+            double speedWeight = Math.Min((speed / 1500.0) * 75.0, 75.0);
+
+            // 2. Density Weight (25% Max Weight): Normalized against a max super-storm density of 50 n/cc
+            double densityWeight = Math.Min((density / 50.0) * 25.0, 25.0);
+
+            // 3. Combined Risk Index: Safely totals between 0.00 and 100.00
             return Math.Round(speedWeight + densityWeight, 2);
         }
 
